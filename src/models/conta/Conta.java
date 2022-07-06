@@ -1,11 +1,11 @@
 package models.conta;
 
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import models.cliente.Cliente;
 import models.cliente.TipoCliente;
+
 
 public abstract class Conta {
     
@@ -23,13 +23,14 @@ public abstract class Conta {
 
         System.out.printf("%s número %s de %s (%S) criada com sucesso.\n", this.tipo, this.numero, this.titular.getNome(), this.titular.getTipo());
     }
+    
 
     public String getNumero() {
         return numero;
     }
 
     public String getTitular() {
-        return titular.getNome();
+        return this.titular.getNome();
     }
 
     public TipoCliente getTipoCliente() {
@@ -40,7 +41,7 @@ public abstract class Conta {
         return this.tipo;
     }
 
-    public boolean saca(double valor) {
+    protected boolean saca(double valor) {
         if (this.titular.getTipo() == TipoCliente.PJ) {
             valor += valor*0.005;
         }
