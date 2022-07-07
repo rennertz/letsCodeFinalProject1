@@ -19,14 +19,17 @@ public class Aplicacao {
         ClientePJ lojasRenner = new ClientePJ("Lojas Renner");
         SimulaJornadaDoCLiente(lojasRenner);
 
-
     }
 
+
     public static void SimulaJornadaDoCLiente(Cliente cliente) {
-        ContaCorrente cc = new ContaCorrente(cliente);
         
+        ContaCorrente cc = new ContaCorrente(cliente);
         cc.deposita(3000);
+        
         System.out.println("Saldo inicial: " + cc.getSaldo());
+        System.out.print("Tentativa de saque de R$ 5000 gera: \n    ");
+        cc.saca(5000);
         System.out.println();
 
         SimuladorDeRendimento simulador = new SimuladorDeRendimento();

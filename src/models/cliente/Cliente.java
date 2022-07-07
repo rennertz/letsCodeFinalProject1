@@ -1,6 +1,9 @@
 package models.cliente;
 
 public abstract class Cliente {
+    /**
+     * Superclasse com os atributos básicos do cliente.
+     */
     
     private final TipoCliente tipo;
     private String nome;
