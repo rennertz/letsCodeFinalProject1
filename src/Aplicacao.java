@@ -10,6 +10,19 @@ import models.conta.ContaPoupanca;
 public class Aplicacao {
 
     public static void main(String[] args) throws Exception {
+        /**
+         * Neste programa são apresentadas as jornadas de um ClientePF e um cliente PJ.
+         *  
+         * Contas Poupança e investimento são criadas e o rendimento é feito por um simulador,
+         * que apresenta o saldo previsto n meses a frente.
+         * 
+         * Atente que o ClientePJ não cria ContaPoupanca, pois não lhe é permitido.
+         * Atente que a transferência de investimento do ClientePJ na ContaINvestimento gera
+         *    um débito adicional de 0.5% de taxa.
+         * Atente que a ContaInvestimento gera ganhos 2% maiores ao ClientePJ.
+         * 
+         * 
+         */
         
         System.out.println("SIMULANDO A JORNADA DE UMA PESSOA FISICA\n");
         ClientePF renner = new ClientePF("Renner");
