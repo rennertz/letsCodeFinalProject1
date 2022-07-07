@@ -8,6 +8,16 @@ import models.cliente.TipoCliente;
 
 
 public abstract class Conta {
+    /**
+     * Superclasse com os atributos métodos básicos de uma conta.
+     *  
+     * Todos os métodos são públicos, exceto deposita e saca e transfere, que não devem estar disponíveis
+     * na ContaInvestimento. Nesta conta o dinheiro só transita por aplicação ou resgate, que checam se
+     * o titular das contas origem e destino são iguais.
+     *  
+     * deposita e saca passama a ser publicos na ContaCorrente e na ContaPoupanca.
+     * transfere (irrestrito) só é publico na ContaCorrente.
+     */
     
     private static int contagemDeContas;
     private final String numero;
@@ -42,12 +52,13 @@ public abstract class Conta {
     }
 
     protected boolean saca(double valor) {
+        // O ClientePJ é cobrado em 0.5% por transação de saque (e consequentemente de transferência)
         if (this.titular.getTipo() == TipoCliente.PJ) {
             valor += valor*0.005;
         }
 
         if (valor > this.saldo.doubleValue()) {
-            System.out.println("Saldo insuficiente.");
+            System.out.println("Erro: saldo insuficiente.");
             return false;
         }
 
@@ -55,13 +66,13 @@ public abstract class Conta {
         return true;
     }
 
-    public void transfere(Conta destinatario, double valor) {
+    protected void transfere(Conta destinatario, double valor) {
         if(this.saca(valor)){
             destinatario.deposita(valor);
         }
     }
 
-    public void deposita(double valor) {
+    protected void deposita(double valor) {
         this.saldo = this.saldo.add(BigDecimal.valueOf(valor).setScale(2, RoundingMode.HALF_DOWN));
     }
 
