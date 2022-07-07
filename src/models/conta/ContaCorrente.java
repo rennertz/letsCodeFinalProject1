@@ -5,8 +5,10 @@ import models.cliente.Cliente;
 
 public class ContaCorrente extends Conta {
     /**
-     * Classe mais versátil, além de saque e depósito oferece investimento nas
-     * demais contas
+     * Classe mais versátil, além de saque e depósito, oferece transferência para para ContaCorrente
+     * de qualquer titularidade.
+     * 
+     * O investimento nas ContasPoupanca e ContaInvestimento só acontecem sendo de mesma titularidada.
      * 
      */
 
@@ -25,14 +27,13 @@ public class ContaCorrente extends Conta {
         super.deposita(valor);
     }
 
-    @Override
-    public void transfere(Conta destinatario, double valor) {
+    public void transfere(ContaCorrente destinatario, double valor) {
         super.transfere(destinatario, valor);
     }
 
     public void investir(ContaPoupanca poupanca, double valor) {
         if (poupanca.getTitular() == this.getTitular()) {
-            this.transfere(poupanca, valor);
+            super.transfere(poupanca, valor);
         } else {
             System.out.println("Erro: você só investir em uma Conta Poupança de mesma titularidade.");
         }
@@ -40,7 +41,7 @@ public class ContaCorrente extends Conta {
 
     public void investir(ContaInvestimento investimento, double valor) {
         if (investimento.getTitular() == this.getTitular()) {
-            this.transfere(investimento, valor);
+            super.transfere(investimento, valor);
         } else {
             System.out.println("Erro: você só investir em uma Conta Investimento de mesma titularidade.");
         }

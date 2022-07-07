@@ -8,6 +8,9 @@ public class ContaPoupanca extends Conta implements ContaComRendimento {
      * A abertura de ContaPoupanca é restrita a ClientePF, conforme implementado
      * em seu único construtor.
      * 
+     * O saldo só pode ser resgatado para ContaCorrente de mesma titularidade, mas também pode
+     * ser sacado.
+     * 
      */
 
 

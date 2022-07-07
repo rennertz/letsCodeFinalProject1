@@ -9,6 +9,7 @@ public class ContaInvestimento extends Conta implements ContaComRendimento{
      * A ContaInvestimento oferece rendimento 2% superior ao ClientePJ, conforme
      * implementado no método getTaxaMensal.
      *  
+     * O saldo só pode ser resgatado para ContaCorrente de mesma titularidade.
      */
 
     private static double rendimentoMensal = 0.012;
@@ -20,7 +21,7 @@ public class ContaInvestimento extends Conta implements ContaComRendimento{
 
     public void resgata(ContaCorrente cc, double valor) {
         if (cc.getTitular() == this.getTitular()) {
-            this.transfere(cc, valor);
+            super.transfere(cc, valor);
         } else {
             System.out.println("Erro: você só pode resgatar para uma Conta Corrente de mesma titularidade.");
         }
