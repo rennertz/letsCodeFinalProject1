@@ -31,19 +31,11 @@ public class ContaCorrente extends Conta {
         super.transfere(destinatario, valor);
     }
 
-    public void investir(ContaPoupanca poupanca, double valor) {
-        if (poupanca.getTitular() == this.getTitular()) {
-            super.transfere(poupanca, valor);
+    public void investir(ContaComRendimento ccr, double valor) {
+        if (ccr.getTitular() == this.getTitular()) {
+            super.transfere(ccr, valor);
         } else {
-            System.out.println("Erro: você só investir em uma Conta Poupança de mesma titularidade.");
-        }
-    }
-
-    public void investir(ContaInvestimento investimento, double valor) {
-        if (investimento.getTitular() == this.getTitular()) {
-            super.transfere(investimento, valor);
-        } else {
-            System.out.println("Erro: você só investir em uma Conta Investimento de mesma titularidade.");
+            System.out.println("Erro: você só investir em uma Conta de mesma titularidade.");
         }
     }
     

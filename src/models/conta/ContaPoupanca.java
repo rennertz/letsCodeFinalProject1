@@ -3,7 +3,7 @@ package models.conta;
 import models.cliente.ClientePF;
 
 
-public class ContaPoupanca extends Conta implements ContaComRendimento {
+public class ContaPoupanca extends ContaComRendimento {
     /**
      * A abertura de ContaPoupanca é restrita a ClientePF, conforme implementado
      * em seu único construtor.

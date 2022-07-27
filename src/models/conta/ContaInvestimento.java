@@ -4,7 +4,7 @@ import models.cliente.Cliente;
 import models.cliente.TipoCliente;
 
 
-public class ContaInvestimento extends Conta implements ContaComRendimento{
+public class ContaInvestimento extends ContaComRendimento {
     /**
      * A ContaInvestimento oferece rendimento 2% superior ao ClientePJ, conforme
      * implementado no método getTaxaMensal.

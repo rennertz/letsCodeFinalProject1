@@ -1,19 +1,17 @@
 package models.conta;
 
-import java.math.BigDecimal;
+import models.cliente.Cliente;
 
 
-public interface ContaComRendimento {
-    /**
-     * Interface consumida pelo SimuladorDeRendimentos.
-     * 
-     * Ela é impolementada pela ContaPoupança e pela ContaInvestimento.
-     */
+public abstract class ContaComRendimento extends Conta {
+
+
+    public ContaComRendimento(Cliente titular, TipoConta tipo) {
+        super(titular, tipo);
+    }
     
-    public double getTaxaMensal();
-    
-    public BigDecimal getSaldo();
+    public abstract double getTaxaMensal();
 
-    public void setTaxaMensal(double rendimentoMensal);
+    public abstract void setTaxaMensal(double rendimentoMensal);
 
 }
